@@ -1,0 +1,23 @@
+{
+  "name": "frontend-project-lvl1",
+  "version": "1.0.0",
+  "description": "brain games",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "brain-games": "bin/brain-games.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexSmkh/frontend-project-lvl1.git"
+  },
+  "author": "alexSmkh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexSmkh/frontend-project-lvl1/issues"
+  },
+  "homepage": "https://github.com/alexSmkh/frontend-project-lvl1#readme"
+}
