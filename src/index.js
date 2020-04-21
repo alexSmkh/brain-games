@@ -1,6 +1,7 @@
 import pairs from '@hexlet/pairs';
 import readlineSync from 'readline-sync';
 import { getBrainEvenChallenge, getBrainEvenRules } from './games/brain-even.js';
+import { getBrainCalcChallenge, getBrainCalcRules } from './games/brain-calc.js';
 
 const greeting = () => console.log('Welcome to the Brain Games!\n');
 
@@ -8,11 +9,11 @@ const getUsername = () => readlineSync.question('May I have your name? ');
 
 const sayHello = (username) => console.log(`Hello, ${username}!\n`);
 
-const explainRules = (rules) => console.log(`Rules: ${rules}.\n`);
+const explainRules = (rules) => console.log(`${rules}\n`);
 
 const getUserAnswer = () => readlineSync.question('Your answer: ');
 
-const askQuestion = (question) => console.log(`Question: ${question}?`);
+const askQuestion = (question) => console.log(`Question: ${question}`);
 
 const congratulate = (username) => console.log(`Congratulations, ${username}!\n`);
 
@@ -32,6 +33,9 @@ const getChallenge = (gameName) => {
     case 'brain-even':
       challenge = getBrainEvenChallenge();
       break;
+    case 'brain-calc':
+      challenge = getBrainCalcChallenge();
+      break;
     default:
       break;
   }
@@ -43,6 +47,9 @@ const getRules = (gameName) => {
   switch (gameName) {
     case 'brain-even':
       rules = getBrainEvenRules();
+      break;
+    case 'brain-calc':
+      rules = getBrainCalcRules();
       break;
     default:
       break;
@@ -58,7 +65,7 @@ const runGame = (gameName, score = 0) => {
   askQuestion(getQuestion(challenge));
 
   const userAnswer = getUserAnswer();
-  const correctAnswer = getAnswer(challenge);
+  const correctAnswer = String(getAnswer(challenge));
   const scoreForAnswer = (userAnswer === correctAnswer ? 1 : 0);
   if (!scoreForAnswer) {
     sayCorrectAnswer(userAnswer, getAnswer(challenge));
@@ -79,5 +86,4 @@ const main = (gameName) => {
   else sayTryAgain(username);
 };
 
-// main('brain-even');
 export default main;
