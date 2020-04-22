@@ -2,6 +2,7 @@ import pairs from '@hexlet/pairs';
 import readlineSync from 'readline-sync';
 import { getBrainEvenChallenge, getBrainEvenRules } from './games/brain-even.js';
 import { getBrainCalcChallenge, getBrainCalcRules } from './games/brain-calc.js';
+import { getBrainGcdChallenge, getBrainGcdRules } from './games/brain-gcd.js';
 
 const greeting = () => console.log('Welcome to the Brain Games!\n');
 
@@ -36,6 +37,9 @@ const getChallenge = (gameName) => {
     case 'brain-calc':
       challenge = getBrainCalcChallenge();
       break;
+    case 'brain-gcd':
+      challenge = getBrainGcdChallenge();
+      break;
     default:
       break;
   }
@@ -50,6 +54,9 @@ const getRules = (gameName) => {
       break;
     case 'brain-calc':
       rules = getBrainCalcRules();
+      break;
+    case 'brain-gcd':
+      rules = getBrainGcdRules();
       break;
     default:
       break;

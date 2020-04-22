@@ -4,7 +4,7 @@ export const isEven = (number) => number % 2 === 0;
 
 export const getRandomNumber = (
   min = 0,
-  max = 100,
+  max = 20,
 ) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 export const getRandomOperator = () => {
@@ -36,6 +36,12 @@ export const makeMathExpression = () => pairs.cons(getRandomOperator(), makePair
 export const getOperatorOfExpression = (expression) => pairs.car(expression);
 
 export const getPairOfNumbers = (expression) => pairs.cdr(expression);
+
+export const makeDecreasingPairOfNumbers = () => {
+  const num1 = getRandomNumber();
+  const num2 = getRandomNumber();
+  return (num1 > num2) ? makePairOfNumbers(num1, num2) : makePairOfNumbers(num2, num1);
+};
 
 export const solveExpression = (expression) => {
   let result;
