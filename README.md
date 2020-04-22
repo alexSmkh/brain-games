@@ -10,6 +10,7 @@
 - [Brain Calc](#brain-calc) - решение простых математических выражений
 - [Brain Gcd](#brain-gcd) - нахождение НОД
 - [Brain Progression](#brain-progression) - нахождение недостающего члена арифметической прогрессии
+- [Brain Prime](#brain-prime) - поиск простого числа
 
 ---
 
