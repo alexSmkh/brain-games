@@ -74,3 +74,14 @@ export const makeProgression = (start, step, length = 10) => {
   }
   return makeProgression(pairs.cons(start, pairs.cdr(start) + step), step, length - 1);
 };
+
+export const isDivisorExist = (number, divisor) => {
+  if (divisor === 1) return false;
+  if (number % divisor === 0) return true;
+  return isDivisorExist(number, divisor - 1);
+};
+
+export const isNumberPrime = (number) => {
+  if (number % 2 === 0) return false;
+  return !(isDivisorExist(number, Math.floor(number / 2)));
+};

@@ -1,6 +1,6 @@
 {
   "name": "frontend-project-lvl1",
-  "version": "1.3.0",
+  "version": "1.4.1",
   "description": "brain games",
   "main": "src/index.js",
   "type": "module",
@@ -12,7 +12,8 @@
     "brain-even": "src/bin/brain-even.js",
     "brain-calc": "src/bin/brain-calc.js",
     "brain-gcd": "src/bin/brain-gcd.js",
-    "brain-progression": "src/bin/brain-progression.js"
+    "brain-progression": "src/bin/brain-progression.js",
+    "brain-prime": "src/bin/brain-prime.js"
   },
   "repository": {
     "type": "git",

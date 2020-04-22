@@ -4,6 +4,7 @@ import { getBrainEvenChallenge, getBrainEvenRules } from './games/brain-even.js'
 import { getBrainCalcChallenge, getBrainCalcRules } from './games/brain-calc.js';
 import { getBrainGcdChallenge, getBrainGcdRules } from './games/brain-gcd.js';
 import { getBrainProgressionRules, getBrainProgressionChallenge } from './games/brain-progression.js';
+import { getBrainPrimeRules, getBrainPrimeChallenge } from './games/brain-prime.js';
 
 const greeting = () => console.log('Welcome to the Brain Games!\n');
 
@@ -25,13 +26,13 @@ const sayCorrect = () => console.log('Correct!\n');
 
 const sayCorrectAnswer = (userAnswer, correctAnswer) => console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".\n`);
 
-const getQuestion = (questionAndAnswer) => pairs.car(questionAndAnswer);
+const getQuestion = (challenge) => pairs.car(challenge);
 
-const getAnswer = (questionAndAnswer) => pairs.cdr(questionAndAnswer);
+const getAnswer = (challenge) => pairs.cdr(challenge);
 
-const getChallenge = (gameName) => {
+const getChallenge = (gameTitle) => {
   let challenge;
-  switch (gameName) {
+  switch (gameTitle) {
     case 'brain-even':
       challenge = getBrainEvenChallenge();
       break;
@@ -44,15 +45,18 @@ const getChallenge = (gameName) => {
     case 'brain-progression':
       challenge = getBrainProgressionChallenge();
       break;
+    case 'brain-prime':
+      challenge = getBrainPrimeChallenge();
+      break;
     default:
       break;
   }
   return challenge;
 };
 
-const getRules = (gameName) => {
+const getRules = (gameTitle) => {
   let rules;
-  switch (gameName) {
+  switch (gameTitle) {
     case 'brain-even':
       rules = getBrainEvenRules();
       break;
@@ -65,17 +69,20 @@ const getRules = (gameName) => {
     case 'brain-progression':
       rules = getBrainProgressionRules();
       break;
+    case 'brain-prime':
+      rules = getBrainPrimeRules();
+      break;
     default:
       break;
   }
   return rules;
 };
 
-const runGame = (gameName, score = 0) => {
+const runGame = (gameTitle, score = 0) => {
   const numberRounds = 3;
   if (score === numberRounds) return true;
 
-  const challenge = getChallenge(gameName);
+  const challenge = getChallenge(gameTitle);
   askQuestion(getQuestion(challenge));
 
   const userAnswer = getUserAnswer();
@@ -86,16 +93,16 @@ const runGame = (gameName, score = 0) => {
     return false;
   }
   sayCorrect();
-  return runGame(gameName, score + 1);
+  return runGame(gameTitle, score + 1);
 };
 
-const main = (gameName) => {
+const main = (gameTitle) => {
   greeting();
   const username = getUsername();
   sayHello(username);
-  explainRules(getRules(gameName));
+  explainRules(getRules(gameTitle));
 
-  const gameReslut = runGame(gameName);
+  const gameReslut = runGame(gameTitle);
   if (gameReslut) congratulate(username);
   else sayTryAgain(username);
 };

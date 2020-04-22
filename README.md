@@ -45,3 +45,12 @@
 
 ![](gif_samples/brain-prog-win.gif)
 ![](gif_samples/brain-prog-lost.gif)
+
+---
+
+### Brain Prime
+
+Игроку необходимо ответить на вопрос: является ли данное число простым.
+
+![](gif_samples/brain-prime-win.gif)
+![](gif_samples/brain-prime-lost.gif)
