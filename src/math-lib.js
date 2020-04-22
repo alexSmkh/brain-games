@@ -4,7 +4,7 @@ export const isEven = (number) => number % 2 === 0;
 
 export const getRandomNumber = (
   min = 0,
-  max = 20,
+  max = 100,
 ) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 export const getRandomOperator = () => {
@@ -65,4 +65,12 @@ export const solveExpression = (expression) => {
 export const getGcd = (num1, num2) => {
   if (num2 === 0) return num1;
   return getGcd(num2, num1 % num2);
+};
+
+export const makeProgression = (start, step, length = 10) => {
+  if (length === 0) return start;
+  if (!pairs.isPair(start)) {
+    return makeProgression(pairs.cons(start, start + step), step, length - 1);
+  }
+  return makeProgression(pairs.cons(start, pairs.cdr(start) + step), step, length - 1);
 };

@@ -3,6 +3,7 @@ import readlineSync from 'readline-sync';
 import { getBrainEvenChallenge, getBrainEvenRules } from './games/brain-even.js';
 import { getBrainCalcChallenge, getBrainCalcRules } from './games/brain-calc.js';
 import { getBrainGcdChallenge, getBrainGcdRules } from './games/brain-gcd.js';
+import { getBrainProgressionRules, getBrainProgressionChallenge } from './games/brain-progression.js';
 
 const greeting = () => console.log('Welcome to the Brain Games!\n');
 
@@ -40,6 +41,9 @@ const getChallenge = (gameName) => {
     case 'brain-gcd':
       challenge = getBrainGcdChallenge();
       break;
+    case 'brain-progression':
+      challenge = getBrainProgressionChallenge();
+      break;
     default:
       break;
   }
@@ -57,6 +61,9 @@ const getRules = (gameName) => {
       break;
     case 'brain-gcd':
       rules = getBrainGcdRules();
+      break;
+    case 'brain-progression':
+      rules = getBrainProgressionRules();
       break;
     default:
       break;

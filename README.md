@@ -9,6 +9,7 @@
 - [Brain Even](#brain-even) - проверка на четность
 - [Brain Calc](#brain-calc) - решение простых математических выражений
 - [Brain Gcd](#brain-gcd) - нахождение НОД
+- [Brain Progression](#brain-progression) - нахождение недостающего члена арифметической прогрессии
 
 ---
 
@@ -37,3 +38,10 @@
 ![](gif_samples/brain-gcd-lost.gif)
 
 ---
+
+### Brain Progression
+
+Игроку необходимо написать недостающий член арифметической прогрессии
+
+![](gif_samples/brain-prog-win.gif)
+![](gif_samples/brain-prog-lost.gif)
