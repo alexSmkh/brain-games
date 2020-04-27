@@ -1,6 +1,6 @@
 {
   "name": "frontend-project-lvl1",
-  "version": "1.4.1",
+  "version": "1.4.3",
   "description": "brain games",
   "main": "src/index.js",
   "type": "module",
@@ -24,6 +24,10 @@
   "bugs": {
     "url": "https://github.com/alexSmkh/frontend-project-lvl1/issues"
   },
+  "keywords": [
+    "math games",
+    "cli games"
+  ],
   "homepage": "https://github.com/alexSmkh/frontend-project-lvl1#readme",
   "dependencies": {
     "@hexlet/pairs": "^1.0.14",
