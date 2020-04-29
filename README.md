@@ -1,6 +1,6 @@
 # Brain games
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/30e4c30dbfecb1aba75d/maintainability)](https://codeclimate.com/github/alexSmkh/frontend-project-lvl1/maintainability)
 [![Node CI](https://github.com/alexSmkh/frontend-project-lvl1/workflows/Node%20CI/badge.svg)](https://github.com/alexSmkh/frontend-project-lvl1/actions)
 
 #### Сборник математических игр:
