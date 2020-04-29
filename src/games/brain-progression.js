@@ -1,5 +1,6 @@
 import pairs from '@hexlet/pairs';
 import { makeProgression, getRandomNumber } from '../math-lib.js';
+import main from '../index.js';
 
 export const getBrainProgressionRules = () => 'What number is missing in the progression?';
 
@@ -14,7 +15,7 @@ const getAnswer = (progression, position, length = 10) => {
   return getAnswer(pairs.car(progression), position, length - 1);
 };
 
-export const getBrainProgressionChallenge = () => {
+export const makeBrainProgressionChallenge = () => {
   const randomPosition = getRandomNumber(1, 10);
   const stepOfProgression = getRandomNumber(1, 10);
   const firstElementOfProgression = getRandomNumber();
@@ -22,4 +23,9 @@ export const getBrainProgressionChallenge = () => {
   const question = makeQuestion(progression, randomPosition);
   const answer = getAnswer(progression, randomPosition);
   return pairs.cons(question, answer);
+};
+
+export default () => {
+  const gameRules = 'What number is missing in the progression?';
+  main(makeBrainProgressionChallenge, gameRules);
 };

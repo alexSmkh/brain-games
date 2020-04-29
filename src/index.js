@@ -1,10 +1,5 @@
 import pairs from '@hexlet/pairs';
 import readlineSync from 'readline-sync';
-import { getBrainEvenChallenge, getBrainEvenRules } from './games/brain-even.js';
-import { getBrainCalcChallenge, getBrainCalcRules } from './games/brain-calc.js';
-import { getBrainGcdChallenge, getBrainGcdRules } from './games/brain-gcd.js';
-import { getBrainProgressionRules, getBrainProgressionChallenge } from './games/brain-progression.js';
-import { getBrainPrimeRules, getBrainPrimeChallenge } from './games/brain-prime.js';
 
 const greeting = () => console.log('Welcome to the Brain Games!\n');
 
@@ -30,59 +25,11 @@ const getQuestion = (challenge) => pairs.car(challenge);
 
 const getAnswer = (challenge) => pairs.cdr(challenge);
 
-const getChallenge = (gameTitle) => {
-  let challenge;
-  switch (gameTitle) {
-    case 'brain-even':
-      challenge = getBrainEvenChallenge();
-      break;
-    case 'brain-calc':
-      challenge = getBrainCalcChallenge();
-      break;
-    case 'brain-gcd':
-      challenge = getBrainGcdChallenge();
-      break;
-    case 'brain-progression':
-      challenge = getBrainProgressionChallenge();
-      break;
-    case 'brain-prime':
-      challenge = getBrainPrimeChallenge();
-      break;
-    default:
-      break;
-  }
-  return challenge;
-};
-
-const getRules = (gameTitle) => {
-  let rules;
-  switch (gameTitle) {
-    case 'brain-even':
-      rules = getBrainEvenRules();
-      break;
-    case 'brain-calc':
-      rules = getBrainCalcRules();
-      break;
-    case 'brain-gcd':
-      rules = getBrainGcdRules();
-      break;
-    case 'brain-progression':
-      rules = getBrainProgressionRules();
-      break;
-    case 'brain-prime':
-      rules = getBrainPrimeRules();
-      break;
-    default:
-      break;
-  }
-  return rules;
-};
-
-const runGame = (gameTitle, score = 0) => {
+const runGame = (getRoundData, score = 0) => {
   const numberRounds = 3;
   if (score === numberRounds) return true;
 
-  const challenge = getChallenge(gameTitle);
+  const challenge = getRoundData();
   askQuestion(getQuestion(challenge));
 
   const userAnswer = getUserAnswer();
@@ -93,17 +40,17 @@ const runGame = (gameTitle, score = 0) => {
     return false;
   }
   sayCorrect();
-  return runGame(gameTitle, score + 1);
+  return runGame(getRoundData, score + 1);
 };
 
-const main = (gameTitle) => {
+const main = (getRoundDataFunc, gameRules) => {
   greeting();
   const username = getUsername();
   sayHello(username);
-  explainRules(getRules(gameTitle));
+  explainRules(gameRules);
 
-  const gameReslut = runGame(gameTitle);
-  if (gameReslut) congratulate(username);
+  const gameResult = runGame(getRoundDataFunc);
+  if (gameResult) congratulate(username);
   else sayTryAgain(username);
 };
 
