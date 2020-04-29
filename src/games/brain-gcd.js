@@ -1,16 +1,32 @@
-import pairs from '@hexlet/pairs';
 import {
-  makeDecreasingPairOfNumbers, getFirstNumber, getSecondNumber, getGcd,
-} from '../math-lib.js';
+  getFirstNumberOfPair, getSecondNumberOfPair, getRandomNumber,
+  makePairOfNumbers, makeChallenge,
+} from '../utils.js';
 import main from '../index.js';
 
-const makeQuestionForChallenge = (pairOfNumbers) => `${getFirstNumber(pairOfNumbers)} ${getSecondNumber(pairOfNumbers)}`;
+const getGcd = (num1, num2) => {
+  if (num2 === 0) return num1;
+  return getGcd(num2, num1 % num2);
+};
+
+const makeQuestionForChallenge = (
+  pairOfNumbers,
+) => `${getFirstNumberOfPair(pairOfNumbers)} ${getSecondNumberOfPair(pairOfNumbers)}`;
+
+const makeDecreasingPairOfNumbers = () => {
+  const num1 = getRandomNumber();
+  const num2 = getRandomNumber();
+  return (num1 > num2) ? makePairOfNumbers(num1, num2) : makePairOfNumbers(num2, num1);
+};
 
 const makeBrainGcdChallenge = () => {
   const pairOfNumbers = makeDecreasingPairOfNumbers();
   const questionForChallenge = makeQuestionForChallenge(pairOfNumbers);
-  const answer = getGcd(getFirstNumber(pairOfNumbers), getSecondNumber(pairOfNumbers));
-  return pairs.cons(questionForChallenge, answer);
+  const answer = getGcd(
+    getFirstNumberOfPair(pairOfNumbers),
+    getSecondNumberOfPair(pairOfNumbers),
+  );
+  return makeChallenge(questionForChallenge, answer);
 };
 
 export default () => {

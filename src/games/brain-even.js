@@ -1,12 +1,13 @@
-import pairs from '@hexlet/pairs';
-import { getRandomNumber, isEven } from '../math-lib.js';
+import { getRandomNumber, makeChallenge } from '../utils.js';
 import main from '../index.js';
+
+export const isEven = (number) => number % 2 === 0;
 
 const getBrainEvenAnswer = (number) => (isEven(number) ? 'yes' : 'no');
 
 const makeBrainEvenChallenge = () => {
   const randomNumber = getRandomNumber();
-  return pairs.cons(randomNumber, getBrainEvenAnswer(randomNumber));
+  return makeChallenge(randomNumber, getBrainEvenAnswer(randomNumber));
 };
 
 export default () => {

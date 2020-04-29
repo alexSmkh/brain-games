@@ -1,9 +1,5 @@
-import pairs from '@hexlet/pairs';
 import readlineSync from 'readline-sync';
-
-const getQuestion = (challenge) => pairs.car(challenge);
-
-const getAnswer = (challenge) => pairs.cdr(challenge);
+import { getQuestion, getAnswer } from './utils.js';
 
 const runGameRound = (getRoundData, score = 0) => {
   const numberRounds = 3;
