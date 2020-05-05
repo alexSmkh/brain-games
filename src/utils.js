@@ -16,6 +16,6 @@ export const getSecondNumberOfPair = (pairsOfNumbers) => pairs.cdr(pairsOfNumber
 
 export const makeRoundData = (question, answer) => pairs.cons(question, answer);
 
-export const getQuestion = (challenge) => pairs.car(challenge);
+export const getQuestion = (questionAndAnswer) => pairs.car(questionAndAnswer);
 
-export const getAnswer = (challenge) => pairs.cdr(challenge);
+export const getAnswer = (questionAndAnswer) => pairs.cdr(questionAndAnswer);
