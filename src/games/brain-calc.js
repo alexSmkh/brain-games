@@ -5,21 +5,8 @@ import runGameEngine from '../index.js';
 const gameDescription = 'What is the result of the expression?';
 
 const getRandomOperator = () => {
-  let randomOperator;
-  switch (getRandomNumber(1, 3)) {
-    case 1:
-      randomOperator = '+';
-      break;
-    case 2:
-      randomOperator = '-';
-      break;
-    case 3:
-      randomOperator = '*';
-      break;
-    default:
-      break;
-  }
-  return randomOperator;
+  const mathOperators = ['+', '-', '*'];
+  return mathOperators[Math.floor(Math.random() * mathOperators.length)];
 };
 
 const solveExpression = (operator, numbers) => {
