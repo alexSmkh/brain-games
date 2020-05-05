@@ -1,4 +1,4 @@
-import { getRandomNumber, makeChallenge } from '../utils.js';
+import { getRandomNumber, makeRoundData } from '../utils.js';
 import main from '../index.js';
 
 export const isDivisorExist = (number, divisor) => {
@@ -12,13 +12,13 @@ export const isNumberPrime = (number) => {
   return !(isDivisorExist(number, Math.floor(number / 2)));
 };
 
-const makeBrainPrimeChallenge = () => {
+const getRoundData = () => {
   const question = getRandomNumber();
   const answer = isNumberPrime(question) ? 'yes' : 'no';
-  return makeChallenge(question, answer);
+  return makeRoundData(question, answer);
 };
 
 export default () => {
   const gameRules = 'Answer "yes" if given number is prime. Otherwise answer "no"';
-  main(makeBrainPrimeChallenge, gameRules);
+  main(getRoundData, gameRules);
 };

@@ -1,8 +1,10 @@
 import pairs from '@hexlet/pairs';
 import {
-  getRandomNumber, getFirstNumberOfPair, getSecondNumberOfPair, makePairOfNumbers, makeChallenge,
+  getRandomNumber, getFirstNumberOfPair, getSecondNumberOfPair, makePairOfNumbers,
+  makeRoundData,
 } from '../utils.js';
 import main from '../index.js';
+
 
 const getPairOfNumbersFromExpression = (expression) => pairs.cdr(expression);
 
@@ -55,14 +57,14 @@ const makeQuestionForChallenge = (expression) => {
   return `${firstNumber} ${operator} ${secondNumber}`;
 };
 
-const makeBrainCalcChallenge = () => {
+const getRoundData = () => {
   const mathExpression = makeMathExpression();
   const resultOfExpression = solveExpression(mathExpression);
   const questionForChallenge = makeQuestionForChallenge(mathExpression);
-  return makeChallenge(questionForChallenge, resultOfExpression);
+  return makeRoundData(questionForChallenge, resultOfExpression);
 };
 
 export default () => {
   const gameRules = 'What is the result of the expression?';
-  main(makeBrainCalcChallenge, gameRules);
+  main(getRoundData, gameRules);
 };

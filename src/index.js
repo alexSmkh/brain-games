@@ -19,13 +19,13 @@ const runGameRound = (getRoundData, score = 0) => {
   return runGameRound(getRoundData, score + 1);
 };
 
-const main = (getRoundDataFunc, gameRules) => {
+const main = (getRoundData, gameRules) => {
   console.log('Welcome to the Brain Games!\n');
   const username = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${username}!\n`);
   console.log(`${gameRules}\n`);
 
-  const gameResult = runGameRound(getRoundDataFunc);
+  const gameResult = runGameRound(getRoundData);
   if (gameResult) console.log(`Congratulations, ${username}!\n`);
   else console.log(`Let's try again, ${username}!\n`);
 };

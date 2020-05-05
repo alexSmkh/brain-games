@@ -1,6 +1,6 @@
 import {
   getFirstNumberOfPair, getSecondNumberOfPair, getRandomNumber,
-  makePairOfNumbers, makeChallenge,
+  makePairOfNumbers, makeRoundData,
 } from '../utils.js';
 import main from '../index.js';
 
@@ -19,17 +19,17 @@ const makeDecreasingPairOfNumbers = () => {
   return (num1 > num2) ? makePairOfNumbers(num1, num2) : makePairOfNumbers(num2, num1);
 };
 
-const makeBrainGcdChallenge = () => {
+const getRoundData = () => {
   const pairOfNumbers = makeDecreasingPairOfNumbers();
   const questionForChallenge = makeQuestionForChallenge(pairOfNumbers);
   const answer = getGcd(
     getFirstNumberOfPair(pairOfNumbers),
     getSecondNumberOfPair(pairOfNumbers),
   );
-  return makeChallenge(questionForChallenge, answer);
+  return makeRoundData(questionForChallenge, answer);
 };
 
 export default () => {
   const gameRules = 'Find the greatest common divisor of given numbers.';
-  main(makeBrainGcdChallenge, gameRules);
+  main(getRoundData, gameRules);
 };

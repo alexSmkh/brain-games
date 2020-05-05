@@ -1,5 +1,5 @@
 import pairs from '@hexlet/pairs';
-import { getRandomNumber, makeChallenge } from '../utils.js';
+import { getRandomNumber, makeRoundData } from '../utils.js';
 import main from '../index.js';
 
 export const makeProgression = (start, step, length = 10) => {
@@ -21,17 +21,17 @@ const getAnswer = (progression, position, length = 10) => {
   return getAnswer(pairs.car(progression), position, length - 1);
 };
 
-export const makeBrainProgressionChallenge = () => {
+export const getRoundData = () => {
   const randomPosition = getRandomNumber(1, 10);
   const stepOfProgression = getRandomNumber(1, 10);
   const firstElementOfProgression = getRandomNumber();
   const progression = makeProgression(firstElementOfProgression, stepOfProgression);
   const question = makeQuestion(progression, randomPosition);
   const answer = getAnswer(progression, randomPosition);
-  return makeChallenge(question, answer);
+  return makeRoundData(question, answer);
 };
 
 export default () => {
   const gameRules = 'What number is missing in the progression?';
-  main(makeBrainProgressionChallenge, gameRules);
+  main(getRoundData, gameRules);
 };
