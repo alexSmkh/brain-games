@@ -29,7 +29,7 @@ const getRoundData = () => {
   const firstElementOfProgression = getRandomNumber();
   const progression = makeProgression(firstElementOfProgression, stepOfProgression);
   const question = makeQuestion(progression, randomPosition);
-  const answer = getAnswer(progression, randomPosition);
+  const answer = String(getAnswer(progression, randomPosition));
   return makeRoundData(question, answer);
 };
 

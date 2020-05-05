@@ -61,7 +61,7 @@ const makeQuestionForChallenge = (expression) => {
 
 const getRoundData = () => {
   const mathExpression = makeMathExpression();
-  const resultOfExpression = solveExpression(mathExpression);
+  const resultOfExpression = String(solveExpression(mathExpression));
   const questionForChallenge = makeQuestionForChallenge(mathExpression);
   return makeRoundData(questionForChallenge, resultOfExpression);
 };

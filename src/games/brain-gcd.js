@@ -24,10 +24,10 @@ const makeDecreasingPairOfNumbers = () => {
 const getRoundData = () => {
   const pairOfNumbers = makeDecreasingPairOfNumbers();
   const questionForChallenge = makeQuestionForChallenge(pairOfNumbers);
-  const answer = getGcd(
+  const answer = String(getGcd(
     getFirstNumberOfPair(pairOfNumbers),
     getSecondNumberOfPair(pairOfNumbers),
-  );
+  ));
   return makeRoundData(questionForChallenge, answer);
 };
 
