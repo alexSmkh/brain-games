@@ -15,6 +15,7 @@ const runGameRound = (getRoundData, username, score = 0) => {
   if (!(userAnswer === correctAnswer)) {
     console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".\n`);
     console.log(`Let's try again, ${username}!\n`);
+    return;
   }
   console.log('Correct!\n');
   runGameRound(getRoundData, username, score + 1);
