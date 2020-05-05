@@ -2,7 +2,9 @@ import {
   getFirstNumberOfPair, getSecondNumberOfPair, getRandomNumber,
   makePairOfNumbers, makeRoundData,
 } from '../utils.js';
-import main from '../index.js';
+import runGameEngine from '../index.js';
+
+const gameDescription = 'Find the greatest common divisor of given numbers.';
 
 const getGcd = (num1, num2) => {
   if (num2 === 0) return num1;
@@ -30,6 +32,5 @@ const getRoundData = () => {
 };
 
 export default () => {
-  const gameRules = 'Find the greatest common divisor of given numbers.';
-  main(getRoundData, gameRules);
+  runGameEngine(getRoundData, gameDescription);
 };

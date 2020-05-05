@@ -3,8 +3,10 @@ import {
   getRandomNumber, getFirstNumberOfPair, getSecondNumberOfPair, makePairOfNumbers,
   makeRoundData,
 } from '../utils.js';
-import main from '../index.js';
+import runGameEngine from '../index.js';
 
+
+const gameDescription = 'What is the result of the expression?';
 
 const getPairOfNumbersFromExpression = (expression) => pairs.cdr(expression);
 
@@ -65,6 +67,5 @@ const getRoundData = () => {
 };
 
 export default () => {
-  const gameRules = 'What is the result of the expression?';
-  main(getRoundData, gameRules);
+  runGameEngine(getRoundData, gameDescription);
 };

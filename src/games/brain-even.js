@@ -1,5 +1,7 @@
 import { getRandomNumber, makeRoundData } from '../utils.js';
-import main from '../index.js';
+import runGameEngine from '../index.js';
+
+const gameDescription = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 export const isEven = (number) => number % 2 === 0;
 
@@ -11,6 +13,5 @@ const getRoundData = () => {
 };
 
 export default () => {
-  const gameRules = 'Answer "yes" if the number is even, otherwise answer "no".';
-  main(getRoundData, gameRules);
+  runGameEngine(getRoundData, gameDescription);
 };

@@ -1,6 +1,8 @@
 import pairs from '@hexlet/pairs';
 import { getRandomNumber, makeRoundData } from '../utils.js';
-import main from '../index.js';
+import runGameEngine from '../index.js';
+
+const gameDescription = 'What number is missing in the progression?';
 
 export const makeProgression = (start, step, length = 10) => {
   if (length === 0) return start;
@@ -32,6 +34,5 @@ export const getRoundData = () => {
 };
 
 export default () => {
-  const gameRules = 'What number is missing in the progression?';
-  main(getRoundData, gameRules);
+  runGameEngine(getRoundData, gameDescription);
 };

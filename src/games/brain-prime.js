@@ -1,5 +1,7 @@
 import { getRandomNumber, makeRoundData } from '../utils.js';
-import main from '../index.js';
+import runGameEngine from '../index.js';
+
+const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no"';
 
 export const isDivisorExist = (number, divisor) => {
   if (divisor === 1) return false;
@@ -19,6 +21,5 @@ const getRoundData = () => {
 };
 
 export default () => {
-  const gameRules = 'Answer "yes" if given number is prime. Otherwise answer "no"';
-  main(getRoundData, gameRules);
+  runGameEngine(getRoundData, gameDescription);
 };
