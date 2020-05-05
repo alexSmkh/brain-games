@@ -1,16 +1,8 @@
-import pairs from '@hexlet/pairs';
-import {
-  getRandomNumber, getFirstNumberOfPair, getSecondNumberOfPair, makePairOfNumbers,
-  makeRoundData,
-} from '../utils.js';
+import { getRandomNumber, makeRoundData } from '../utils.js';
 import runGameEngine from '../index.js';
 
 
 const gameDescription = 'What is the result of the expression?';
-
-const getPairOfNumbersFromExpression = (expression) => pairs.cdr(expression);
-
-const getOperatorOfExpression = (expression) => pairs.car(expression);
 
 const getRandomOperator = () => {
   let randomOperator;
@@ -30,18 +22,17 @@ const getRandomOperator = () => {
   return randomOperator;
 };
 
-const solveExpression = (expression) => {
+const solveExpression = (operator, numbers) => {
   let result;
-  const pairsOfNumbers = getPairOfNumbersFromExpression(expression);
-  switch (getOperatorOfExpression(expression)) {
+  switch (operator) {
     case '+':
-      result = getFirstNumberOfPair(pairsOfNumbers) + getSecondNumberOfPair(pairsOfNumbers);
+      result = numbers.reduce((acc, number) => acc + number);
       break;
     case '-':
-      result = getFirstNumberOfPair(pairsOfNumbers) - getSecondNumberOfPair(pairsOfNumbers);
+      result = numbers.reduce((acc, number) => acc - number);
       break;
     case '*':
-      result = getFirstNumberOfPair(pairsOfNumbers) * getSecondNumberOfPair(pairsOfNumbers);
+      result = numbers.reduce((acc, number) => acc * number);
       break;
     default:
       break;
@@ -49,21 +40,31 @@ const solveExpression = (expression) => {
   return result;
 };
 
-const makeMathExpression = () => pairs.cons(getRandomOperator(), makePairOfNumbers());
+const getListOfNumbers = (count, listOfNumbers = []) => {
+  if (count === 0) return listOfNumbers;
+  listOfNumbers.push(getRandomNumber());
+  return getListOfNumbers(count - 1, listOfNumbers);
+};
 
-const makeQuestionForChallenge = (expression) => {
-  const pairsOfNumbers = getPairOfNumbersFromExpression(expression);
-  const firstNumber = getFirstNumberOfPair(pairsOfNumbers);
-  const secondNumber = getSecondNumberOfPair(pairsOfNumbers);
-  const operator = getOperatorOfExpression(expression);
-  return `${firstNumber} ${operator} ${secondNumber}`;
+const makeQuestion = (operator, numbers) => {
+  const partsOfQuestion = numbers.reduce((acc, number, index, arr) => {
+    if (index >= arr.length - 1) {
+      acc.push(number);
+    } else {
+      acc.push(number, operator);
+    }
+    return acc;
+  }, []);
+  return partsOfQuestion.join(' ');
 };
 
 const getRoundData = () => {
-  const mathExpression = makeMathExpression();
-  const resultOfExpression = String(solveExpression(mathExpression));
-  const questionForChallenge = makeQuestionForChallenge(mathExpression);
-  return makeRoundData(questionForChallenge, resultOfExpression);
+  const countOfNumbers = 2;
+  const numbers = getListOfNumbers(countOfNumbers);
+  const mathOperator = getRandomOperator();
+  const question = makeQuestion(mathOperator, numbers);
+  const answer = String(solveExpression(mathOperator, numbers));
+  return makeRoundData(question, answer);
 };
 
 export default () => {
