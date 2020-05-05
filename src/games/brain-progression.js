@@ -4,12 +4,20 @@ import runGameEngine from '../index.js';
 
 const gameDescription = 'What number is missing in the progression?';
 
-const makeProgression = (start, step, length = 10) => {
-  if (length === 0) return start;
-  if (!pairs.isPair(start)) {
-    return makeProgression(pairs.cons(start, start + step), step, length - 1);
+const makeProgression = (progression, step, length = 10) => {
+  if (length === 0) return progression;
+  if (!pairs.isPair(progression)) {
+    return makeProgression(
+      pairs.cons(progression, progression + step),
+      step,
+      length - 1,
+    );
   }
-  return makeProgression(pairs.cons(start, pairs.cdr(start) + step), step, length - 1);
+  return makeProgression(
+    pairs.cons(progression, pairs.cdr(progression) + step),
+    step,
+    length - 1,
+  );
 };
 
 const makeQuestion = (progression, position, quest = '', length = 10) => {
