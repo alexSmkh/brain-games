@@ -4,7 +4,7 @@ import runGameEngine from '../index.js';
 
 const gameDescription = 'What number is missing in the progression?';
 
-export const makeProgression = (start, step, length = 10) => {
+const makeProgression = (start, step, length = 10) => {
   if (length === 0) return start;
   if (!pairs.isPair(start)) {
     return makeProgression(pairs.cons(start, start + step), step, length - 1);
@@ -23,7 +23,7 @@ const getAnswer = (progression, position, length = 10) => {
   return getAnswer(pairs.car(progression), position, length - 1);
 };
 
-export const getRoundData = () => {
+const getRoundData = () => {
   const randomPosition = getRandomNumber(1, 10);
   const stepOfProgression = getRandomNumber(1, 10);
   const firstElementOfProgression = getRandomNumber();
