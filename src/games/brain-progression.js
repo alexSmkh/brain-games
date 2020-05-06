@@ -1,34 +1,16 @@
-import pairs from '@hexlet/pairs';
 import { getRandomNumber, makeRoundData } from '../utils.js';
 import runGameEngine from '../index.js';
 
 const gameDescription = 'What number is missing in the progression?';
+const lengthProgression = 10;
 
-const makeProgression = (progression, step, length = 10) => {
-  if (length === 0) return progression;
-  if (!pairs.isPair(progression)) {
-    return makeProgression(
-      pairs.cons(progression, progression + step),
-      step,
-      length - 1,
-    );
-  }
-  return makeProgression(
-    pairs.cons(progression, pairs.cdr(progression) + step),
-    step,
-    length - 1,
-  );
-};
-
-const makeQuestion = (progression, position, quest = '', length = 10) => {
-  if (length === 0) return quest;
-  if (length === position) return makeQuestion(pairs.car(progression), position, `.. ${quest}`, length - 1);
-  return makeQuestion(pairs.car(progression), position, `${pairs.cdr(progression)} ${quest}`, length - 1);
-};
-
-const getAnswer = (progression, position, length = 10) => {
-  if (length === position) return pairs.cdr(progression);
-  return getAnswer(pairs.car(progression), position, length - 1);
+const makeProgression = (firstElement, step) => {
+  const iter = (progression, currentNumber) => {
+    if (progression.length === lengthProgression) return progression;
+    progression.push(currentNumber + step);
+    return iter(progression, currentNumber + step);
+  };
+  return iter([firstElement], firstElement);
 };
 
 const getRoundData = () => {
@@ -36,8 +18,9 @@ const getRoundData = () => {
   const stepOfProgression = getRandomNumber(1, 10);
   const firstElementOfProgression = getRandomNumber();
   const progression = makeProgression(firstElementOfProgression, stepOfProgression);
-  const question = makeQuestion(progression, randomPosition);
-  const answer = String(getAnswer(progression, randomPosition));
+  const answer = String(progression[randomPosition]);
+  progression[randomPosition] = '..';
+  const question = progression.join(' ');
   return makeRoundData(question, answer);
 };
 
