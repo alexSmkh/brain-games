@@ -12,7 +12,7 @@ const runGameRound = (getRoundData, username, score = 0) => {
   console.log(`Question: ${getQuestion(roundData)}`);
   const userAnswer = readlineSync.question('Your answer: ');
   const correctAnswer = getAnswer(roundData);
-  if (!(userAnswer === correctAnswer)) {
+  if (userAnswer !== correctAnswer) {
     console.log(`\n"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
     console.log(`Let's try again, ${username}!\n`);
     return;
