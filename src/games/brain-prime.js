@@ -3,14 +3,12 @@ import runGameEngine from '../index.js';
 
 const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no"';
 
-const isDivisorExist = (number, divisor) => {
-  if (divisor === 1) return false;
-  if (number % divisor === 0) return true;
-  return isDivisorExist(number, divisor - 1);
-};
-
 const isNumberPrime = (number) => {
-  if (number % 2 === 0) return false;
+  const isDivisorExist = (dividend, divisor) => {
+    if (divisor === 1) return false;
+    if (dividend % divisor === 0) return true;
+    return isDivisorExist(dividend, divisor - 1);
+  };
   return !(isDivisorExist(number, Math.floor(number / 2)));
 };
 
