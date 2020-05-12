@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { getRandomNumber, makeRoundData } from '../utils.js';
 import runGameEngine from '../index.js';
 
@@ -19,12 +20,6 @@ const solveExpression = (operator, numbers) => {
   }
 };
 
-const getListOfNumbers = (count, listOfNumbers = []) => {
-  if (count === 0) return listOfNumbers;
-  listOfNumbers.push(getRandomNumber());
-  return getListOfNumbers(count - 1, listOfNumbers);
-};
-
 const makeQuestion = (operator, numbers) => {
   const partsOfQuestion = numbers.reduce((acc, number, index, arr) => {
     if (index >= arr.length - 1) {
@@ -39,7 +34,7 @@ const makeQuestion = (operator, numbers) => {
 
 const getRoundData = () => {
   const countOfNumbers = 2;
-  const numbers = getListOfNumbers(countOfNumbers);
+  const numbers = _.times(countOfNumbers, getRandomNumber);
   const mathOperator = mathOperators[getRandomNumber(mathOperators.length - 1)];
   const question = makeQuestion(mathOperator, numbers);
   const answer = String(solveExpression(mathOperator, numbers));
