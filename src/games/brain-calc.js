@@ -4,10 +4,7 @@ import runGameEngine from '../index.js';
 
 const gameDescription = 'What is the result of the expression?';
 
-const getRandomOperator = () => {
-  const mathOperators = ['+', '-', '*'];
-  return mathOperators[Math.floor(Math.random() * mathOperators.length)];
-};
+const mathOperators = ['+', '-', '*'];
 
 const solveExpression = (operator, numbers) => {
   let result;
@@ -48,7 +45,7 @@ const makeQuestion = (operator, numbers) => {
 const getRoundData = () => {
   const countOfNumbers = 2;
   const numbers = getListOfNumbers(countOfNumbers);
-  const mathOperator = getRandomOperator();
+  const mathOperator = mathOperators[getRandomNumber(mathOperators.length - 1)];
   const question = makeQuestion(mathOperator, numbers);
   const answer = String(solveExpression(mathOperator, numbers));
   return makeRoundData(question, answer);
