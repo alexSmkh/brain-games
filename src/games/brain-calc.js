@@ -7,21 +7,16 @@ const gameDescription = 'What is the result of the expression?';
 const mathOperators = ['+', '-', '*'];
 
 const solveExpression = (operator, numbers) => {
-  let result;
   switch (operator) {
     case '+':
-      result = numbers.reduce((acc, number) => acc + number);
-      break;
+      return numbers.reduce((acc, number) => acc + number);
     case '-':
-      result = numbers.reduce((acc, number) => acc - number);
-      break;
+      return numbers.reduce((acc, number) => acc - number);
     case '*':
-      result = numbers.reduce((acc, number) => acc * number);
-      break;
+      return numbers.reduce((acc, number) => acc * number);
     default:
-      break;
+      throw new Error(`Unknown math operator: "${operator}"`);
   }
-  return result;
 };
 
 const getListOfNumbers = (count, listOfNumbers = []) => {
