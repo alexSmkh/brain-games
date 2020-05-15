@@ -21,7 +21,9 @@ const solveExpression = (operator, numbers) => {
 };
 
 const getRoundData = () => {
-  const countOfNumbers = 2;
+  const minNumber = 2;
+  const maxNumber = 3;
+  const countOfNumbers = getRandomNumber(minNumber, maxNumber);
   const numbers = _.times(countOfNumbers, getRandomNumber);
   const mathOperator = mathOperators[getRandomNumber(0, mathOperators.length - 1)];
   const question = numbers.join(` ${mathOperator} `);
