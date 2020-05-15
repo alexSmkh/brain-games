@@ -7,7 +7,7 @@ const lengthProgression = 10;
 const makeProgression = (firstElement, step) => {
   const iter = (progression, currentNumber) => {
     if (progression.length === lengthProgression) return progression;
-    progression.push(currentNumber + step);
+    progression.push(currentNumber);
     return iter(progression, currentNumber + step);
   };
   return iter([firstElement], firstElement);
