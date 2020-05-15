@@ -10,7 +10,7 @@ const makeProgression = (firstElement, step) => {
     progression.push(currentNumber);
     return iter(progression, currentNumber + step);
   };
-  return iter([firstElement], firstElement);
+  return iter([], firstElement);
 };
 
 const getRoundData = () => {
