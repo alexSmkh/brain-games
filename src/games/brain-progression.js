@@ -14,7 +14,7 @@ const makeProgression = (firstElement, step) => {
 };
 
 const getRoundData = () => {
-  const randomPosition = getRandomNumber(1, 10);
+  const randomPosition = getRandomNumber(0, lengthOfProgression - 1);
   const step = getRandomNumber(1, 10);
   const firstElement = getRandomNumber();
   const progression = makeProgression(firstElement, step);
