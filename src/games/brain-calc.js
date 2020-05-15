@@ -23,8 +23,8 @@ const solveExpression = (operator, numbers) => {
 const getRoundData = () => {
   const countOfNumbers = 2;
   const numbers = _.times(countOfNumbers, getRandomNumber);
-  const mathOperator = mathOperators[getRandomNumber(mathOperators.length - 1)];
-  const question = numbers.join(`${mathOperator}`);
+  const mathOperator = mathOperators[getRandomNumber(0, mathOperators.length - 1)];
+  const question = numbers.join(` ${mathOperator} `);
   const answer = String(solveExpression(mathOperator, numbers));
   return makeRoundData(question, answer);
 };
