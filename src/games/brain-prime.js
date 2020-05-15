@@ -13,7 +13,7 @@ const isNumberPrime = (number) => {
 };
 
 const getRoundData = () => {
-  const question = getRandomNumber();
+  const question = String(getRandomNumber());
   const answer = isNumberPrime(question) ? 'yes' : 'no';
   return makeRoundData(question, answer);
 };
