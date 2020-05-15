@@ -19,6 +19,7 @@ const runGameRound = (getRoundData, username) => {
       return;
     }
     console.log('Correct!\n');
+    iter(round + 1);
   };
   iter(1);
 };
