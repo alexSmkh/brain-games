@@ -13,9 +13,9 @@ const isNumberPrime = (number) => {
 };
 
 const getRoundData = () => {
-  const question = String(getRandomNumber());
+  const question = getRandomNumber();
   const answer = isNumberPrime(question) ? 'yes' : 'no';
-  return makeRoundData(question, answer);
+  return makeRoundData(String(question), answer);
 };
 
 export default () => {
